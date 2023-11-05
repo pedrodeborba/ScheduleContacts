@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="439.0" prefWidth="498.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.schedulecontacts.controller.Contact">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <TextField fx:id="nameField" prefHeight="21.0" prefWidth="427.0" promptText="Nome completo" style="-fx-max-width: 300;" />
+      <TextField fx:id="phoneField" promptText="Telefone" style="-fx-max-width: 300;" />
+      <TextField fx:id="emailField" promptText="Email" style="-fx-max-width: 300;" />
+      <TextField fx:id="cpfField" prefHeight="21.0" prefWidth="427.0" promptText="CPF" style="-fx-max-width: 300;" />
+       <TextField fx:id="roadField" prefHeight="25.0" prefWidth="116.0" promptText="Rua" style="-fx-max-width: 300;" />
+      <TextField fx:id="numberField" prefHeight="25.0" prefWidth="116.0" promptText="Número" style="-fx-max-width: 300;" />
+      <TextField fx:id="neighborhoodField" promptText="Bairro" style="-fx-max-width: 300;" />
+      <TextField fx:id="cepField" promptText="CEP" style="-fx-max-width: 300;" />
+       <Button mnemonicParsing="false" onAction="#sendContact" text="Adicionar" />
+   </children>
+</VBox>
