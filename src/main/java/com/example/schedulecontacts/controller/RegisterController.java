@@ -1,5 +1,6 @@
 package com.example.schedulecontacts.controller;
 
+import com.example.schedulecontacts.model.RegisterModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Register {
+public class RegisterController {
     @FXML
     private TextField emailField;
 
@@ -28,13 +29,13 @@ public class Register {
 
     @FXML
     void register(ActionEvent event) {
-        com.example.schedulecontacts.model.Register register = new com.example.schedulecontacts.model.Register();
+        RegisterModel register = new RegisterModel();
         register.setEmail(emailField.getText());
         register.setPassword(passwordField.getText());
         register.setConfirmPassword(ConfirmPasswordField.getText());
 
         try (Connection conexao = Database.getConnection()) {
-            String sql = "INSERT INTO usuario (email, senha) VALUES (?, ?)";
+            String sql = "INSERT INTO usuarios (email, senha) VALUES (?, ?)";
             try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
                 stmt.setString(1, register.getEmail());
                 stmt.setString(2, register.getConfirmPassword());

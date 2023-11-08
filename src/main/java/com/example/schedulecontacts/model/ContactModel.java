@@ -1,6 +1,6 @@
 package com.example.schedulecontacts.model;
 
-public class Contact {
+public class ContactModel {
     private String nome;
     private String telefone;
     private String email;
@@ -10,7 +10,7 @@ public class Contact {
     private String bairro;
     private String cep;
 
-    public Contact(String nome, String telefone, String email, String cpf, String rua, String numero, String bairro, String cep) {
+    public ContactModel(String nome, String telefone, String email, String cpf, String rua, String numero, String bairro, String cep) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -21,7 +21,7 @@ public class Contact {
         this.cep = cep;
     }
 
-    public Contact() {
+    public ContactModel() {
         this.nome = "";
         this.telefone = "";
         this.email = "";

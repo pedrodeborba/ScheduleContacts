@@ -1,14 +1,14 @@
 package com.example.schedulecontacts.model;
 
-public class Register {
+public class RegisterModel {
     private String email;
     private String password;
     private String confirmPassword;
 
-    public Register() {
+    public RegisterModel() {
     }
 
-    public Register(String email, String password, String confirmPassword) {
+    public RegisterModel(String email, String password, String confirmPassword) {
         this.email = email;
         this.password = password;
         this.confirmPassword = confirmPassword;

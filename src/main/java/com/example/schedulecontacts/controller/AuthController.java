@@ -17,7 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Auth {
+public class AuthController {
     @FXML
     private TextField emailField;
 
@@ -60,7 +60,7 @@ public class Auth {
 
     private boolean authenticateUser(String email, String password) {
         try (Connection connection = Database.getConnection()) {
-            String sql = "SELECT * FROM usuario WHERE email = ?";
+            String sql = "SELECT * FROM usuarios WHERE email = ?";
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setString(1, email);
                 ResultSet rs = stmt.executeQuery();

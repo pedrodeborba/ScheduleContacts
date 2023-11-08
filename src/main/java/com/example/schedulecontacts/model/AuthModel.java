@@ -1,13 +1,13 @@
 package com.example.schedulecontacts.model;
 
-public class Auth {
+public class AuthModel {
     private String email;
     private String password;
 
-    public Auth() {
+    public AuthModel() {
     }
 
-    public Auth(String email, String password) {
+    public AuthModel(String email, String password) {
         this.email = email;
         this.password = password;
     }
