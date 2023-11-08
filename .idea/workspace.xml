@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44315d18-0715-4a0e-b7dd-db5b3a99c532" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/Auth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/ContactController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/db/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/db/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/Auth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/AuthModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/ContactModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/RegisterModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Contact.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Contact.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Register.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="44315d18-0715-4a0e-b7dd-db5b3a99c532" name="Changes" comment=":art: Creating contact listing structure" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,6 +83,15 @@
       <option name="presentableId" value="Default" />
       <updated>1699019720624</updated>
     </task>
+    <task id="LOCAL-00001" summary=":art: Creating contact listing structure">
+      <option name="closed" value="true" />
+      <created>1699469155814</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699469155814</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -108,5 +104,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=":art: Creating contact listing structure" />
+    <option name="LAST_COMMIT_MESSAGE" value=":art: Creating contact listing structure" />
   </component>
 </project>
