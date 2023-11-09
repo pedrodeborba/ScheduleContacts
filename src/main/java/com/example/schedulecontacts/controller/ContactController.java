@@ -1,78 +1,101 @@
 package com.example.schedulecontacts.controller;
 
-import com.example.schedulecontacts.model.ContactModel;
 import com.example.schedulecontacts.db.Database;
+import com.example.schedulecontacts.model.ContactModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ContactController {
     @FXML
-    private TextField nameField;
+    private TableView<ContactModel> table;
     @FXML
-    private TextField phoneField;
+    private TableColumn<ContactModel, String> nome;
     @FXML
-    private TextField emailField;
+    private TableColumn<ContactModel, String> telefone;
     @FXML
-    private TextField cpfField;
+    private TableColumn<ContactModel, String> email;
     @FXML
-    private TextField roadField;
+    private TableColumn<ContactModel, String> cpf;
     @FXML
-    private TextField numberField;
+    private TableColumn<ContactModel, String> rua;
     @FXML
-    private TextField neighborhoodField;
+    private TableColumn<ContactModel, Integer> numero;
     @FXML
-    private TextField cepField;
+    private TableColumn<ContactModel, String> bairro;
+    @FXML
+    private TableColumn<ContactModel, String> cep;
 
-    @FXML
-    private void sendContact() {
-        ContactModel contact = new ContactModel();
-        contact.setNome(nameField.getText());
-        contact.setTelefone(phoneField.getText());
-        contact.setEmail(emailField.getText());
-        contact.setCpf(cpfField.getText());
-        contact.setRua(roadField.getText());
-        contact.setNumero(numberField.getText());
-        contact.setBairro(neighborhoodField.getText());
-        contact.setCep(cepField.getText());
+    ObservableList<ContactModel> contacts = FXCollections.observableArrayList();
 
-        try (Connection conexao = Database.getConnection()) {
-            String sql = "INSERT INTO contatos (nome, telefone, email, cpf, rua, numero, bairro, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-                stmt.setString(1, contact.getNome());
-                stmt.setString(2, contact.getTelefone());
-                stmt.setString(3, contact.getEmail());
-                stmt.setString(4, contact.getCpf());
-                stmt.setString(5, contact.getRua());
-                stmt.setString(6, contact.getNumero());
-                stmt.setString(7, contact.getBairro());
-                stmt.setString(8, contact.getCep());
-                stmt.executeUpdate();
+    public void initialize() {
+        nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        telefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        cpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        rua.setCellValueFactory(new PropertyValueFactory<>("rua"));
+        numero.setCellValueFactory(new PropertyValueFactory<>("numero"));
+        bairro.setCellValueFactory(new PropertyValueFactory<>("bairro"));
+        cep.setCellValueFactory(new PropertyValueFactory<>("cep"));
 
-                System.out.println("Contato inserido com sucesso!");
-            }
-        } catch (SQLException e) {
-            System.out.print("Erro ao conectar ao banco de dados.");
-            e.printStackTrace();
-        }
+        //Adicionando um estilo na tabela
+        Label labelNome = new Label("NOME");
+        Label labelTelefone = new Label("TELEFONE");
+        Label labelEmail = new Label("EMAIL");
+        Label labelCpf = new Label("CPF");
+        Label labelRua = new Label("RUA");
+        Label labelNumero = new Label("NÚMERO");
+        Label labelBairro = new Label("BAIRRO");
+        Label labelCep = new Label("CEP");
+
+        labelNome.setStyle("-fx-text-fill: #6495ED;");
+        labelTelefone.setStyle("-fx-text-fill: #6495ED;");
+        labelEmail.setStyle("-fx-text-fill: #6495ED;");
+        labelCpf.setStyle("-fx-text-fill: #6495ED;");
+        labelRua.setStyle("-fx-text-fill: #6495ED;");
+        labelNumero.setStyle("-fx-text-fill: #6495ED;");
+        labelBairro.setStyle("-fx-text-fill: #6495ED;");
+        labelCep.setStyle("-fx-text-fill: #6495ED;");
+
+        nome.setGraphic(labelNome);
+        telefone.setGraphic(labelTelefone);
+        email.setGraphic(labelEmail);
+        cpf.setGraphic(labelCpf);
+        rua.setGraphic(labelRua);
+        numero.setGraphic(labelNumero);
+        bairro.setGraphic(labelBairro);
+        cep.setGraphic(labelCep);
+
+        // Exibindo os contatos do banco de dados
+        listContact();
     }
 
-    @FXML
-    private void listContacts() {
+    public void listContact() {
         String sql = "SELECT * FROM contatos";
-
-        List<ContactModel> contacts = new ArrayList<>();
 
         try (Connection conexao = Database.getConnection();
              PreparedStatement stmt = conexao.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
+            // Limpando a lista de contatos
+            contacts.clear();
+
+            // Pegando os contatos do banco de dados
             while (rs.next()) {
                 ContactModel contact = new ContactModel();
                 contact.setNome(rs.getString("nome"));
@@ -87,17 +110,36 @@ public class ContactController {
                 contacts.add(contact);
             }
 
-            // Mostrar os contatos
-            for (ContactModel contact : contacts) {
-                System.out.println(contact.getNome());
-                System.out.println(contact.getTelefone());
-            }
+            // Definindo a lista de contatos na tabela
+            table.setItems(contacts);
+
         } catch (SQLException e) {
-            System.out.print("Erro ao conectar ao banco de dados.");
+            System.out.println("Erro ao conectar ao banco de dados.");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToAddContact(ActionEvent event) {
+        try {
+            // Carregando o arquivo FXML da tela
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/schedulecontacts/AddContact.fxml"));
+            Parent root = loader.load();
+
+            // Criando a cena da tela
+            Scene scene = new Scene(root);
+
+            // Acessando o palco (Stage) atual da aplicação
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Definindo a cena da tela no palco
+            stage.setScene(scene);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 }
+
 
 
 

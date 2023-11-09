@@ -7,6 +7,8 @@ module com.example.schedulecontacts {
     requires com.dlsc.formsfx;
 
     opens com.example.schedulecontacts to javafx.fxml;
+    opens com.example.schedulecontacts.model to javafx.base;
+
     exports com.example.schedulecontacts;
     exports com.example.schedulecontacts.controller;
     opens com.example.schedulecontacts.controller to javafx.fxml;

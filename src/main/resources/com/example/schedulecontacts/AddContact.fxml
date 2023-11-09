@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.schedulecontacts.controller.AddController">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutY="-11.0" prefHeight="100.0" prefWidth="1366.0" spacing="800.0" style="-fx-background-color: #6495ED;">
+         <children>
+            <Label text="Agendamento de contatos" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#goToContact" style="-fx-background-color: fff; -fx-min-width: 150;" text="Voltar" textFill="CORNFLOWERBLUE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
+      <VBox alignment="CENTER" layoutX="659.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="707.0" spacing="20.0">
+         <children>
+            <TextField fx:id="nameField" prefHeight="21.0" prefWidth="427.0" promptText="Nome completo" style="-fx-max-width: 300; -fx-min-height: 50; -fx-min-width: 400; -fx-background-color: fff; -fx-border-color: #6495ED; -fx-border-width: 3; -fx-border-radius: 20; -fx-background-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="phoneField" promptText="Telefone" style="-fx-max-width: 300; -fx-min-height: 50; -fx-min-width: 400; -fx-background-color: fff; -fx-border-color: #6495ED; -fx-border-width: 3; -fx-border-radius: 20; -fx-background-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="emailField" promptText="Email" style="-fx-max-width: 300; -fx-min-height: 50; -fx-min-width: 400; -fx-background-color: fff; -fx-border-color: #6495ED; -fx-border-width: 3; -fx-border-radius: 20; -fx-background-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="cpfField" prefHeight="21.0" prefWidth="427.0" promptText="CPF" style="-fx-max-width: 300; -fx-min-height: 50; -fx-min-width: 400; -fx-background-color: fff; -fx-border-color: #6495ED; -fx-border-width: 3; -fx-border-radius: 20; -fx-background-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+             <TextField fx:id="roadField" prefHeight="25.0" prefWidth="116.0" promptText="Rua" style="-fx-max-width: 300; -fx-min-height: 50; -fx-min-width: 400; -fx-background-color: fff; -fx-border-color: #6495ED; -fx-border-width: 3; -fx-border-radius: 20; -fx-background-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="numberField" prefHeight="25.0" prefWidth="116.0" promptText="Número" style="-fx-max-width: 300; -fx-min-height: 50; -fx-min-width: 400; -fx-background-color: fff; -fx-border-color: #6495ED; -fx-border-width: 3; -fx-border-radius: 20; -fx-background-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="neighborhoodField" promptText="Bairro" style="-fx-max-width: 300; -fx-min-height: 50; -fx-min-width: 400; -fx-background-color: fff; -fx-border-color: #6495ED; -fx-border-width: 3; -fx-border-radius: 20; -fx-background-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="cepField" promptText="CEP" style="-fx-max-width: 300; -fx-min-height: 50; -fx-min-width: 400; -fx-background-color: fff; -fx-border-color: #6495ED; -fx-border-width: 3; -fx-border-radius: 20; -fx-background-radius: 20;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+             <Button mnemonicParsing="false" onAction="#sendContact" style="-fx-background-color: #6495ED; -fx-background-radius: 20; -fx-min-height: 50; -fx-min-width: 200;" text="Adicionar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="-1.0" layoutY="88.0" prefHeight="676.0" prefWidth="683.0">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/register-contacts.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
