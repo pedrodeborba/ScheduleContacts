@@ -13,8 +13,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.w3c.dom.events.MouseEvent;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -138,6 +141,53 @@ public class ContactController {
             e.printStackTrace();
         }
     }
+
+    // ---------- Editar contato ----------
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private TextField phoneField;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private TextField cpfField;
+
+    @FXML
+    private TextField roadField;
+
+    @FXML
+    private TextField numberField;
+
+    @FXML
+    private TextField neighborhoodField;
+
+    @FXML
+    private TextField cepField;
+
+//    @FXML
+//    protected void lineTable(MouseEvent event) {
+//        //int show = table.getSelectionModel().getSelectedIndex();
+//        ContactModel cm = table.getSelectionModel().getSelectedItem();
+//        System.out.printf(cm.getNome());
+//
+//
+//    }
+
+    @FXML
+    void delete(ActionEvent event) {
+
+    }
+
+    @FXML
+    void edit(ActionEvent event) {
+
+    }
+
+
+
 }
 
 
