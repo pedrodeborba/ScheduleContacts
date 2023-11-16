@@ -32,7 +32,7 @@
       </HBox>
       <VBox layoutY="99.0" prefHeight="434.0" prefWidth="1366.0">
          <children>
-            <TableView fx:id="table" prefHeight="434.0" prefWidth="1357.0">
+            <TableView fx:id="table" onMouseClicked="#lineTable" prefHeight="434.0" prefWidth="1357.0">
               <columns>
                 <TableColumn fx:id="nome" prefWidth="180.6666717529297" style="-fx-alignment: center; -fx-text-fill: #6495ED;" />
                 <TableColumn fx:id="telefone" prefWidth="167.3333282470703" style="-fx-alignment: center; -fx-text-fill: #6495ED;" />
@@ -94,7 +94,7 @@
       </VBox>
       <VBox alignment="CENTER" layoutX="1199.0" layoutY="532.0" prefHeight="236.0" prefWidth="169.0" style="-fx-background-color: #6495ED;">
          <children>
-            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#edit" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: fff; -fx-background-radius: 10;" text="Editar" textFill="CORNFLOWERBLUE">
+            <Button fx:id="edit" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editAction" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: fff; -fx-background-radius: 10;" text="Editar" textFill="CORNFLOWERBLUE">
                <VBox.margin>
                   <Insets bottom="50.0" />
                </VBox.margin>
@@ -102,7 +102,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#delete" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: fff; -fx-background-radius: 10;" text="Deletar" textFill="CORNFLOWERBLUE">
+            <Button fx:id="delete" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteAction" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: fff; -fx-background-radius: 10;" text="Deletar" textFill="CORNFLOWERBLUE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

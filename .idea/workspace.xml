@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44315d18-0715-4a0e-b7dd-db5b3a99c532" name="Changes" comment=":art: Creating contact listing structure">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/AddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/AddController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/ContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/ContactController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/db/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/db/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/AddContact.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/AddContact.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/ContactModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/ContactModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Contact.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Contact.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +63,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Work/Java/ScheduleContacts/src/main/resources/com/example/schedulecontacts/image",
+    "last_opened_file_path": "D:/Work/repositories/ScheduleContacts",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",

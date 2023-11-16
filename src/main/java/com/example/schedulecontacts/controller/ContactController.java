@@ -15,8 +15,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -24,25 +24,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static java.lang.Integer.parseInt;
+
 public class ContactController {
     @FXML
     private TableView<ContactModel> table;
     @FXML
-    private TableColumn<ContactModel, String> nome;
-    @FXML
-    private TableColumn<ContactModel, String> telefone;
-    @FXML
-    private TableColumn<ContactModel, String> email;
-    @FXML
-    private TableColumn<ContactModel, String> cpf;
-    @FXML
-    private TableColumn<ContactModel, String> rua;
+    private TableColumn<ContactModel, String> nome, telefone, email, cpf, rua, bairro, cep;
     @FXML
     private TableColumn<ContactModel, Integer> numero;
-    @FXML
-    private TableColumn<ContactModel, String> bairro;
-    @FXML
-    private TableColumn<ContactModel, String> cep;
+
 
     ObservableList<ContactModel> contacts = FXCollections.observableArrayList();
 
@@ -142,48 +133,106 @@ public class ContactController {
         }
     }
 
-    // ---------- Editar contato ----------
+    // ---------- Editar e apagar contato ----------
     @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField phoneField;
+    private TextField nameField, phoneField, emailField, cpfField, roadField, numberField, neighborhoodField, cepField;
 
     @FXML
-    private TextField emailField;
+    protected void lineTable(MouseEvent event) {
+        int show = table.getSelectionModel().getSelectedIndex();
+        ContactModel contact = table.getSelectionModel().getSelectedItem();
 
-    @FXML
-    private TextField cpfField;
-
-    @FXML
-    private TextField roadField;
-
-    @FXML
-    private TextField numberField;
-
-    @FXML
-    private TextField neighborhoodField;
-
-    @FXML
-    private TextField cepField;
-
-//    @FXML
-//    protected void lineTable(MouseEvent event) {
-//        //int show = table.getSelectionModel().getSelectedIndex();
-//        ContactModel cm = table.getSelectionModel().getSelectedItem();
-//        System.out.printf(cm.getNome());
-//
-//
-//    }
-
-    @FXML
-    void delete(ActionEvent event) {
-
+        nameField.setText(contact.getNome());
+        phoneField.setText(contact.getTelefone());
+        emailField.setText(contact.getEmail());
+        cpfField.setText(contact.getCpf());
+        roadField.setText(contact.getRua());
+        numberField.setText(String.valueOf(contact.getNumero()));
+        neighborhoodField.setText(contact.getBairro());
+        cepField.setText(contact.getCep());
     }
 
     @FXML
-    void edit(ActionEvent event) {
+    void deleteAction(ActionEvent event) {
+        ContactModel selectedContact = table.getSelectionModel().getSelectedItem();
 
+        if (selectedContact != null) {
+            String sql = "DELETE FROM contatos WHERE nome = ?";
+
+            try (Connection conexao = Database.getConnection();
+                 PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+                stmt.setString(1, selectedContact.getNome());
+                int rowsAffected = stmt.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    System.out.println("Contato excluído com sucesso.");
+                    listContact();  // Atualiza a tabela após exclusão
+                    nameField.setText("");
+                    phoneField.setText("");
+                    emailField.setText("");
+                    cpfField.setText("");
+                    roadField.setText("");
+                    numberField.setText("");
+                    neighborhoodField.setText("");
+                    cepField.setText("");
+                } else {
+                    System.out.println("Erro ao excluir o contato.");
+                }
+
+            } catch (SQLException e) {
+                System.out.println("Erro ao conectar ao banco de dados.");
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Nenhum contato selecionado para exclusão.");
+        }
+    }
+
+    @FXML
+    void editAction(ActionEvent event) {
+        String name = nameField.getText();
+        String phone = phoneField.getText();
+        String email = emailField.getText();
+        String cpf = cpfField.getText();
+        String road = roadField.getText();
+        String number = String.valueOf(parseInt(numberField.getText()));
+        String neighborhood = neighborhoodField.getText();
+        String cep = cepField.getText();
+
+        ContactModel selectedContact = table.getSelectionModel().getSelectedItem();
+
+        if (selectedContact != null) {
+            String sql = "UPDATE contatos SET nome = ?, telefone = ?, email = ?, cpf = ?, rua = ?, numero = ?, bairro = ?, cep = ? WHERE nome = ?";
+            try (Connection conexao = Database.getConnection();
+                 PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+                stmt.setString(1, name);
+                stmt.setString(2, phone);
+                stmt.setString(3, email);
+                stmt.setString(4, cpf);
+                stmt.setString(5, road);
+                stmt.setString(6, number);
+                stmt.setString(7, neighborhood);
+                stmt.setString(8, cep);
+                stmt.setString(9, selectedContact.getNome());
+
+                int rowsAffected = stmt.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    System.out.println("Contato atualizado com sucesso.");
+                    listContact();  // Atualiza a tabela após atualização
+                } else {
+                    System.out.println("Erro ao atualizar o contato.");
+                }
+
+            } catch (SQLException e) {
+                System.out.println("Erro ao conectar ao banco de dados.");
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Nenhum contato selecionado para edição.");
+        }
     }
 
 
