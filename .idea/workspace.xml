@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44315d18-0715-4a0e-b7dd-db5b3a99c532" name="Changes" comment=":art: Creating contact listing structure">
+    <list default="true" id="44315d18-0715-4a0e-b7dd-db5b3a99c532" name="Changes" comment=":sparkles: New function of Edit and Delete contacts">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/ValidationModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/image/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/MainApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/AddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/AddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/ContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/ContactController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/ContactModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/ContactModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/RegisterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/schedulecontacts/model/RegisterModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Contact.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Contact.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/schedulecontacts/Login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +71,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "D:/Work/repositories/ScheduleContacts",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.JavaFX"
@@ -76,6 +83,8 @@
       <recent name="D:\Work\Java\ScheduleContacts\src\main\resources\com\example\schedulecontacts\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Work\repositories\ScheduleContacts\src\main\java\com\example\schedulecontacts" />
+      <recent name="D:\Work\repositories\ScheduleContacts\src\main\resources\com\example\schedulecontacts\image" />
       <recent name="D:\Work\Java\ScheduleContacts\src\main\resources\com\example\schedulecontacts\views" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -119,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699469155814</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=":sparkles: New function of Edit and Delete contacts">
+      <created>1700095393916</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700095393916</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -135,7 +151,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value=":art: Creating contact listing structure" />
-    <option name="LAST_COMMIT_MESSAGE" value=":art: Creating contact listing structure" />
+    <MESSAGE value=":sparkles: New function of Edit and Delete contacts" />
+    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: New function of Edit and Delete contacts" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

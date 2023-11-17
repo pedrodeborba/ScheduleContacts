@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -33,8 +34,11 @@ public class AuthController {
             // Autenticação bem-sucedida, navegue para a próxima tela
             navigateNextScreen(event);
         } else {
-            // Exibir uma mensagem de erro de autenticação, por exemplo, usando showAlert
-            // showAlert("Erro de autenticação", "Email ou senha incorretos.");
+            Alert errorAuth = new Alert(Alert.AlertType.ERROR);
+            errorAuth.setTitle("Erro de autenticação");
+            errorAuth.setHeaderText("Email ou senha incorretos");
+            errorAuth.setContentText("Por favor, tente novamente");
+            errorAuth.showAndWait();
         }
     }
 
@@ -68,7 +72,6 @@ public class AuthController {
                 if (rs.next()) {
                     String storedPassword = rs.getString("senha");
 
-                    // Verifique se a senha fornecida corresponde à senha armazenada (não é aconselhável em produção)
                     if (password.equals(storedPassword)) {
                         return true; // Autenticação bem-sucedida
                     }

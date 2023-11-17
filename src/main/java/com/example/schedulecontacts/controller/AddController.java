@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
@@ -63,31 +64,51 @@ public class AddController {
 
         // Validando o formato do email
         if (!isValidEmail(email)) {
-            System.out.println("Formato de email inválido.");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Formato de email inválido.");
+            alert.setContentText("O email deve conter @.");
+            alert.showAndWait();
             return;
         }
 
         // Validando o formato do telefone
         if (!isValidPhoneNumber(phone)) {
-            System.out.println("Formato de telefone inválido.");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Formato de telefone inválido.");
+            alert.setContentText("Ex: (51) 9 9999-9999.");
+            alert.showAndWait();
             return;
         }
 
         // Validando o formato do CPF
         if (!isValidCPF(cpf)) {
-            System.out.println("Formato de CPF inválido.");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Formato de CPF inválido.");
+            alert.setContentText("Ex: 000.000.000-00.");
+            alert.showAndWait();
             return;
         }
 
         // Validando o formato do CEP
         if (!isValidCEP(cep)) {
-            System.out.println("Formato de CEP inválido.");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Formato de CEP inválido.");
+            alert.setContentText("Ex: 00000-000.");
+            alert.showAndWait();
             return;
         }
 
         // Validando se o número é um inteiro
         if (!isValidInteger(number)) {
-            System.out.println("O número deve ser um valor inteiro válido.");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Formato de número inválido.");
+            alert.setContentText("O número deve ser inteiro.");
+            alert.showAndWait();
             return;
         }
 
@@ -104,7 +125,10 @@ public class AddController {
                 stmt.setString(8, contact.getCep());
                 stmt.executeUpdate();
 
-                System.out.println("Contato inserido com sucesso!");
+                Alert sucess = new Alert(Alert.AlertType.INFORMATION);
+                sucess.setTitle("Sucesso");
+                sucess.setHeaderText("Contato adicionado com sucesso.");
+                sucess.showAndWait();
 
                 nameField.setText("");
                 phoneField.setText("");

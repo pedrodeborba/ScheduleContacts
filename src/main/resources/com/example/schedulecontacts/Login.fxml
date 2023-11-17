@@ -46,7 +46,8 @@
             <Hyperlink onAction="#goToRegister" text="Não possui uma conta? Faça seu cadastro" textFill="WHITE" underline="true">
                <font>
                   <Font size="15.0" />
-               </font></Hyperlink>
+               </font>
+            </Hyperlink>
          </children>
       </VBox>
    </children>

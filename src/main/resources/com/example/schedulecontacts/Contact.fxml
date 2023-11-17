@@ -2,34 +2,17 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.schedulecontacts.controller.ContactController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="1368.0" spacing="800.0" style="-fx-background-color: #6495ED;">
-         <children>
-            <Label text="Agendamento de contatos" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
-            <Button mnemonicParsing="false" onAction="#goToAddContact" style="-fx-background-color: fff;" text="Adicionar contato" textFill="CORNFLOWERBLUE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Button>
-         </children>
-         <padding>
-            <Insets left="20.0" />
-         </padding>
-      </HBox>
       <VBox layoutY="99.0" prefHeight="434.0" prefWidth="1366.0">
          <children>
             <TableView fx:id="table" onMouseClicked="#lineTable" prefHeight="434.0" prefWidth="1357.0">
@@ -92,7 +75,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER" layoutX="1199.0" layoutY="532.0" prefHeight="236.0" prefWidth="169.0" style="-fx-background-color: #6495ED;">
+      <VBox alignment="CENTER" layoutX="1199.0" layoutY="532.0" prefHeight="236.0" prefWidth="167.0" style="-fx-background-color: #6495ED;">
          <children>
             <Button fx:id="edit" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editAction" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: fff; -fx-background-radius: 10;" text="Editar" textFill="CORNFLOWERBLUE">
                <VBox.margin>
@@ -109,5 +92,24 @@
             </Button>
          </children>
       </VBox>
+      <AnchorPane layoutX="-1.0" layoutY="-8.0" prefHeight="108.0" prefWidth="1367.0" style="-fx-background-color: #6495ED;">
+         <children>
+            <Button layoutX="1234.0" layoutY="33.0" mnemonicParsing="false" onAction="#exitAction" style="-fx-background-color: f00; -fx-min-width: 100;" text="Sair" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="1000.0" layoutY="34.0" mnemonicParsing="false" onAction="#goToAddContact" style="-fx-background-color: fff;" text="+ Adicionar contato" textFill="CORNFLOWERBLUE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="108.0" fitWidth="102.0" layoutX="27.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

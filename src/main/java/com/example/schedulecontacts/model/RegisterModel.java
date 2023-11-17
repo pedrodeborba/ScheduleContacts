@@ -31,16 +31,10 @@ public class RegisterModel {
     }
 
     public void setPassword(String password) {
-        if (password.length() < 8) {
-            throw new IllegalArgumentException("A senha deve ter no mínimo 8 caracteres.");
-        }
         this.password = password;
     }
 
     public void setConfirmPassword(String confirmPassword) {
-        if (!confirmPassword.equals(this.password)) {
-            throw new IllegalArgumentException("As senhas não coincidem.");
-        }
         this.confirmPassword = confirmPassword;
     }
 }

@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -23,6 +20,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 import static java.lang.Integer.parseInt;
 
@@ -108,7 +106,10 @@ public class ContactController {
             table.setItems(contacts);
 
         } catch (SQLException e) {
-            System.out.println("Erro ao conectar ao banco de dados.");
+            Alert errorConn = new Alert(Alert.AlertType.ERROR);
+            errorConn.setTitle("Erro");
+            errorConn.setHeaderText("Erro ao conectar ao banco de dados.");
+            errorConn.showAndWait();
             e.printStackTrace();
         }
     }
@@ -139,7 +140,6 @@ public class ContactController {
 
     @FXML
     protected void lineTable(MouseEvent event) {
-        int show = table.getSelectionModel().getSelectedIndex();
         ContactModel contact = table.getSelectionModel().getSelectedItem();
 
         nameField.setText(contact.getNome());
@@ -166,7 +166,11 @@ public class ContactController {
                 int rowsAffected = stmt.executeUpdate();
 
                 if (rowsAffected > 0) {
-                    System.out.println("Contato excluído com sucesso.");
+                    Alert sucessDel = new Alert(Alert.AlertType.INFORMATION);
+                    sucessDel.setTitle("Sucesso");
+                    sucessDel.setHeaderText("Contato excluído com sucesso.");
+                    sucessDel.showAndWait();
+
                     listContact();  // Atualiza a tabela após exclusão
                     nameField.setText("");
                     phoneField.setText("");
@@ -177,15 +181,24 @@ public class ContactController {
                     neighborhoodField.setText("");
                     cepField.setText("");
                 } else {
-                    System.out.println("Erro ao excluir o contato.");
+                    Alert errorDel = new Alert(Alert.AlertType.ERROR);
+                    errorDel.setTitle("Erro");
+                    errorDel.setHeaderText("Erro ao excluir o contato.");
+                    errorDel.showAndWait();
                 }
 
             } catch (SQLException e) {
-                System.out.println("Erro ao conectar ao banco de dados.");
+                Alert errorConn = new Alert(Alert.AlertType.ERROR);
+                errorConn.setTitle("Erro");
+                errorConn.setHeaderText("Erro ao conectar ao banco de dados.");
+                errorConn.showAndWait();
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Nenhum contato selecionado para exclusão.");
+            Alert warningDel = new Alert(Alert.AlertType.WARNING);
+            warningDel.setTitle("Aviso");
+            warningDel.setHeaderText("Nenhum contato selecionado para exclusão.");
+            warningDel.showAndWait();
         }
     }
 
@@ -220,23 +233,55 @@ public class ContactController {
                 int rowsAffected = stmt.executeUpdate();
 
                 if (rowsAffected > 0) {
-                    System.out.println("Contato atualizado com sucesso.");
+                    Alert sucessEdit = new Alert(Alert.AlertType.INFORMATION);
+                    sucessEdit.setTitle("Sucesso");
+                    sucessEdit.setHeaderText("Contato atualizado com sucesso.");
+                    sucessEdit.showAndWait();
+
                     listContact();  // Atualiza a tabela após atualização
                 } else {
-                    System.out.println("Erro ao atualizar o contato.");
+                    Alert errorEdit = new Alert(Alert.AlertType.ERROR);
+                    errorEdit.setTitle("Erro");
+                    errorEdit.setHeaderText("Erro ao atualizar o contato.");
+                    errorEdit.showAndWait();
                 }
 
             } catch (SQLException e) {
-                System.out.println("Erro ao conectar ao banco de dados.");
+                Alert errorConn = new Alert(Alert.AlertType.ERROR);
+                errorConn.setTitle("Erro");
+                errorConn.setHeaderText("Erro ao conectar ao banco de dados.");
+                errorConn.showAndWait();
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Nenhum contato selecionado para edição.");
+            Alert warningEdit = new Alert(Alert.AlertType.WARNING);
+            warningEdit.setTitle("Aviso");
+            warningEdit.setHeaderText("Nenhum contato selecionado para edição.");
+            warningEdit.showAndWait();
         }
     }
 
-
-
+    @FXML
+    void exitAction(ActionEvent event) {
+        try {
+            Alert exit = new Alert(Alert.AlertType.CONFIRMATION);
+            exit.setTitle("Sair");
+            exit.setHeaderText("Deseja realmente sair?");
+            exit.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+            Optional<ButtonType> retorno = exit.showAndWait();
+            if(retorno.get() == ButtonType.NO)
+                exit.close();
+            else if(retorno.get() == ButtonType.YES){
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/schedulecontacts/Login.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 

@@ -1,16 +1,18 @@
 package com.example.schedulecontacts.controller;
 
 import com.example.schedulecontacts.model.RegisterModel;
+import com.example.schedulecontacts.model.ValidationModel;
+import com.example.schedulecontacts.db.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import com.example.schedulecontacts.db.Database;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -27,6 +29,8 @@ public class RegisterController {
     @FXML
     private PasswordField ConfirmPasswordField;
 
+    private ValidationModel validator = new ValidationModel();
+
     @FXML
     void register(ActionEvent event) {
         RegisterModel register = new RegisterModel();
@@ -34,6 +38,24 @@ public class RegisterController {
         register.setPassword(passwordField.getText());
         register.setConfirmPassword(ConfirmPasswordField.getText());
 
+        // Validar email
+        if (!validator.isValidEmail(register.getEmail())) {
+            showErrorAlert("Formato de email inválido.");
+            return;
+        }
+
+        // Validar senha
+        if (!validator.isValidPassword(register.getPassword())) {
+            showErrorAlert("A senha deve ter pelo menos 8 caracteres.");
+            return;
+        }
+
+        if(!register.getPassword().equals(register.getConfirmPassword())) {
+            showErrorAlert("As senhas não coincidem.");
+            return;
+        }
+
+        // Registrar usuário
         try (Connection conexao = Database.getConnection()) {
             String sql = "INSERT INTO usuarios (email, senha) VALUES (?, ?)";
             try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
@@ -42,10 +64,22 @@ public class RegisterController {
 
                 stmt.executeUpdate();
 
-                System.out.println("Usuario cadastrado com sucesso!");
+                emailField.setText("");
+                passwordField.setText("");
+                ConfirmPasswordField.setText("");
+
+                Alert sucess = new Alert(Alert.AlertType.INFORMATION);
+                sucess.setTitle("Sucesso");
+                sucess.setHeaderText("Usuário registrado com sucesso.");
+                sucess.showAndWait();
+
+                goToLogin(event);
 
             }catch (SQLException e) {
-                System.out.print("Erro ao registrar usuário.");
+                Alert errorRegister = new Alert(Alert.AlertType.ERROR);
+                errorRegister.setTitle("Erro");
+                errorRegister.setHeaderText("Erro ao registrar usuário.");
+                errorRegister.showAndWait();
                 e.printStackTrace();
             }
 
@@ -58,20 +92,20 @@ public class RegisterController {
     @FXML
     private void goToLogin(ActionEvent event) {
         try {
-            // Carregando o arquivo FXML da tela de login
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/schedulecontacts/Login.fxml"));
             Parent root = loader.load();
-
-            // Crinando a cena da tela de login
             Scene scene = new Scene(root);
-
-            // Acessando o palco (Stage) atual da aplicação
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Definindo a cena da tela de login no palco
             stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erro");
+        alert.setHeaderText(message);
+        alert.showAndWait();
     }
 }
